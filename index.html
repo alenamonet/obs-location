@@ -4,8 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RealtimeIRL Combined Overlay</title>
+
   <style>
-    html, body {
+    :root {
+      --overlay-height: 56px;
+      --gap: 2px;
+
+      --time-width: 132px;
+      --date-width: 165px;
+      --location-width: 360px;
+      --temp-width: 100px;
+      --distance-width: 140px;
+      --speed-width: 140px;
+    }
+
+    html,
+    body {
       margin: 0;
       padding: 0;
       width: 100%;
@@ -16,68 +30,37 @@
 
     body {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: flex-start;
     }
 
     .overlay-wrap {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      align-items: center;
+      display: inline-flex;
+      align-items: flex-start;
       justify-content: flex-start;
-      width: 100%;
-      height: 70px;
-      padding: 0;
+      gap: var(--gap);
+      height: var(--overlay-height);
       box-sizing: border-box;
       background: transparent;
-      gap: 8px;
+      flex-wrap: nowrap;
+      width: auto;
     }
 
     iframe {
+      display: block;
+      height: var(--overlay-height);
       border: 0;
       background: transparent;
       overflow: hidden;
-      display: block;
-      height: 70px;
-      min-height: 70px;
-      max-height: 70px;
       flex: 0 0 auto;
     }
 
-    #time {
-      width: 80px;
-      flex: 0 0 80px;
-    }
-
-    #date {
-      width: 120px;
-      flex: 0 0 210px;
-    }
-
-    #location {
-      min-width: 380px;
-      width: auto;
-      flex: 0 1 auto;
-    }
-
-    #temperature {
-      width: 100px;
-      flex: 0 1 auto;
-    }
-
-    #distance {
-      min-width: 180px;
-      width: auto;
-      flex: 0 0 85px;
-    }
-
-    #speed {
-      min-width: 180px;
-      width: auto;
-   flex: 0 0 85px;
-    }
-    
+    #time { width: var(--time-width); }
+    #date { width: var(--date-width); }
+    #location { width: var(--location-width); }
+    #temperature { width: var(--temp-width); }
+    #distance { width: var(--distance-width); }
+    #speed { width: var(--speed-width); }
   </style>
 </head>
 <body>
@@ -85,13 +68,13 @@
     <iframe
       id="time"
       scrolling="no"
-      src="https://overlays.rtirl.com/datetime/luxon.html?key=7smpbf8kh2mxwwcf&lang=en&format=t&css=Y29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMSk7CmZvbnQtc2l6ZTogMjBweDsKZm9udC1mYW1pbHk6IFBvcHBpbnM7CmZvbnQtd2VpZ2h0OiBub3JtYWw7CmZvbnQtc3R5bGU6IG5vcm1hbDsKdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7CmJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMCk7CmJvcmRlci1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAxKTsKYm9yZGVyLXdpZHRoOiAwcHg7CmJvcmRlci1zdHlsZTogc29saWQ7CnRleHQtYWxpZ246IGxlZnQ7CmJvcmRlci1yYWRpdXM6IDAlIDAlIDAlIDAlOwpwYWRkaW5nOiAwcHg7Ci13ZWJraXQtdGV4dC1zdHJva2Utd2lkdGg6IDBweDsKLXdlYmtpdC10ZXh0LXN0cm9rZS1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAxKTsKdGV4dC1zaGFkb3c6IDBweCAxcHggM3B4IHJnYmEoMCwgMCwgMCwgMC40NSk7&font=aHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1Qb3BwaW5zJmRpc3BsYXk9c3dhcA==">
+      src="https://overlays.rtirl.com/datetime/luxon.html?key=rm0qb5jr0qtis39f&lang=en&format=t&css=Y29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMSk7CmZvbnQtc2l6ZTogMjBweDsKZm9udC1mYW1pbHk6IFBvcHBpbnM7CmZvbnQtd2VpZ2h0OiBub3JtYWw7CmZvbnQtc3R5bGU6IG5vcm1hbDsKdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7CmJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMCk7CmJvcmRlci1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAxKTsKYm9yZGVyLXdpZHRoOiAwcHg7CmJvcmRlci1zdHlsZTogc29saWQ7CnRleHQtYWxpZ246IGxlZnQ7CmJvcmRlci1yYWRpdXM6IDAlIDAlIDAlIDAlOwpwYWRkaW5nOiAwcHg7Ci13ZWJraXQtdGV4dC1zdHJva2Utd2lkdGg6IDBweDsKLXdlYmtpdC10ZXh0LXN0cm9rZS1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAxKTsKdGV4dC1zaGFkb3c6IDBweCAxcHggM3B4IHJnYmEoMCwgMCwgMCwgMC40NSk7&font=aHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1Qb3BwaW5zJmRpc3BsYXk9c3dhcA==">
     </iframe>
 
     <iframe
       id="date"
       scrolling="no"
-      src="https://overlays.rtirl.com/datetime/luxon.html?key=7smpbf8kh2mxwwcf&lang=en&format=DD&css=Y29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMSk7CmZvbnQtc2l6ZTogMjBweDsKZm9udC1mYW1pbHk6IFBvcHBpbnM7CmZvbnQtd2VpZ2h0OiBub3JtYWw7CmZvbnQtc3R5bGU6IG5vcm1hbDsKdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7CmJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMCk7CmJvcmRlci1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAxKTsKYm9yZGVyLXdpZHRoOiAwcHg7CmJvcmRlci1zdHlsZTogc29saWQ7CnRleHQtYWxpZ246IGxlZnQ7CmJvcmRlci1yYWRpdXM6IDAlIDAlIDAlIDAlOwpwYWRkaW5nOiAwcHg7Ci13ZWJraXQtdGV4dC1zdHJva2Utd2lkdGg6IDBweDsKLXdlYmtpdC10ZXh0LXN0cm9rZS1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAxKTsKdGV4dC1zaGFkb3c6IDBweCAxcHggM3B4IHJnYmEoMCwgMCwgMCwgMC40NSk7&font=aHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1Qb3BwaW5zJmRpc3BsYXk9c3dhcA==">
+      src="https://overlays.rtirl.com/datetime/luxon.html?key=rm0qb5jr0qtis39f&lang=en&format=DD&css=Y29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMSk7CmZvbnQtc2l6ZTogMjBweDsKZm9udC1mYW1pbHk6IFBvcHBpbnM7CmZvbnQtd2VpZ2h0OiBub3JtYWw7CmZvbnQtc3R5bGU6IG5vcm1hbDsKdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7CmJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMCk7CmJvcmRlci1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAxKTsKYm9yZGVyLXdpZHRoOiAwcHg7CmJvcmRlci1zdHlsZTogc29saWQ7CnRleHQtYWxpZ246IGxlZnQ7CmJvcmRlci1yYWRpdXM6IDAlIDAlIDAlIDAlOwpwYWRkaW5nOiAwcHg7Ci13ZWJraXQtdGV4dC1zdHJva2Utd2lkdGg6IDBweDsKLXdlYmtpdC10ZXh0LXN0cm9rZS1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAxKTsKdGV4dC1zaGFkb3c6IDBweCAxcHggM3B4IHJnYmEoMCwgMCwgMCwgMC40NSk7&font=aHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1Qb3BwaW5zJmRpc3BsYXk9c3dhcA==">
     </iframe>
 
     <iframe
@@ -103,7 +86,7 @@
     <iframe
       id="temperature"
       scrolling="no"
-      src="https://overlays.rtirl.com/weather/temperature/F.html?key=7smpbf8kh2mxwwcf&css=Y29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMSk7CmZvbnQtc2l6ZTogMjBweDsKZm9udC1mYW1pbHk6IFBvcHBpbnM7CmZvbnQtd2VpZ2h0OiBub3JtYWw7CmZvbnQtc3R5bGU6IG5vcm1hbDsKdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7CmJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMCk7CmJvcmRlci1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAxKTsKYm9yZGVyLXdpZHRoOiAwcHg7CmJvcmRlci1zdHlsZTogc29saWQ7CnRleHQtYWxpZ246IGxlZnQ7CmJvcmRlci1yYWRpdXM6IDAlIDAlIDAlIDAlOwpwYWRkaW5nOiAwcHg7Ci13ZWJraXQtdGV4dC1zdHJva2Utd2lkdGg6IDBweDsKLXdlYmtpdC10ZXh0LXN0cm9rZS1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAxKTsKdGV4dC1zaGFkb3c6IDBweCAxcHggM3B4IHJnYmEoMCwgMCwgMCwgMC40NSk7&font=aHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1Qb3BwaW5zJmRpc3BsYXk9c3dhcA==">
+      src="https://overlays.rtirl.com/weather/temperature/F.html?key=rm0qb5jr0qtis39f&css=Y29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMSk7CmZvbnQtc2l6ZTogMjBweDsKZm9udC1mYW1pbHk6IFBvcHBpbnM7CmZvbnQtd2VpZ2h0OiBub3JtYWw7CmZvbnQtc3R5bGU6IG5vcm1hbDsKdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7CmJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMCk7CmJvcmRlci1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAxKTsKYm9yZGVyLXdpZHRoOiAwcHg7CmJvcmRlci1zdHlsZTogc29saWQ7CnRleHQtYWxpZ246IGxlZnQ7CmJvcmRlci1yYWRpdXM6IDAlIDAlIDAlIDAlOwpwYWRkaW5nOiAwcHg7Ci13ZWJraXQtdGV4dC1zdHJva2Utd2lkdGg6IDBweDsKLXdlYmtpdC10ZXh0LXN0cm9rZS1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAxKTsKdGV4dC1zaGFkb3c6IDBweCAxcHggM3B4IHJnYmEoMCwgMCwgMCwgMC40NSk7&font=aHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1Qb3BwaW5zJmRpc3BsYXk9c3dhcA==">
     </iframe>
 
     <iframe
@@ -117,7 +100,6 @@
       scrolling="no"
       src="https://overlays.rtirl.com/speed/mph.html?key=rm0qb5jr0qtis39f&css=Y29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMSk7CmZvbnQtc2l6ZTogMjBweDsKZm9udC1mYW1pbHk6IFBvcHBpbnM7CmZvbnQtd2VpZ2h0OiBub3JtYWw7CmZvbnQtc3R5bGU6IG5vcm1hbDsKdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7CmJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMCk7CmJvcmRlci1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAxKTsKYm9yZGVyLXdpZHRoOiAwcHg7CmJvcmRlci1zdHlsZTogc29saWQ7CnRleHQtYWxpZ246IGxlZnQ7CmJvcmRlci1yYWRpdXM6IDAlIDAlIDAlIDAlOwpwYWRkaW5nOiAwcHg7Ci13ZWJraXQtdGV4dC1zdHJva2Utd2lkdGg6IDBweDsKLXdlYmtpdC10ZXh0LXN0cm9rZS1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAxKTsKdGV4dC1zaGFkb3c6IDBweCAxcHggM3B4IHJnYmEoMCwgMCwgMCwgMC40NSk7&font=aHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1Qb3BwaW5zJmRpc3BsYXk9c3dhcA==">
     </iframe>
-    
   </div>
 </body>
 </html>
