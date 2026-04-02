@@ -8,12 +8,14 @@
   <style>
     :root {
       --overlay-height: 56px;
-      --gap: 6px;
+      --gap: 0px;
 
-      --time-width: 120px;
-      --date-width: 150px;
-      --temp-width: 84px;
-      --divider-width: 16px;
+      --time-width: 132px;
+      --date-width: 165px;
+      --location-width: 360px;
+      --temp-width: 100px;
+      --distance-width: 140px;
+      --speed-width: 140px;
     }
 
     html,
@@ -75,22 +77,6 @@
       flex: 0 0 var(--temp-width);
     }
 
-    .divider {
-      width: var(--divider-width);
-      flex: 0 0 var(--divider-width);
-      height: var(--overlay-height);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-family: 'Poppins', sans-serif;
-      font-size: 28px;
-      font-weight: 600;
-      color: #ffffff;
-      text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
-      line-height: 1;
-      white-space: nowrap;
-    }
   </style>
 </head>
 <body>
